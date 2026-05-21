@@ -88,22 +88,8 @@ window.addEventListener('DOMContentLoaded', () => {
 let currentLang = localStorage.getItem('lang') || 'english';
 
 
-// UNLOCKED LEVELS
-let unlockedLevels = ['red'];
 
-
-// LEVEL ORDER
-const levelOrder = [
-    'red',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'indigo',
-    'violet'
-];
-
-
+//LANGUAGE DATA
 const texts = {
 
     malay: {
@@ -128,7 +114,8 @@ const texts = {
         },
         
         orange: { 
-            title: "Dunia Warna Ceria" 
+            title: "Dunia Warna Ceria",
+            content: "Belajar perkataan warna dengan kad imbas yang menyeronokkan!"
         },
         
         yellow: { 
@@ -152,7 +139,7 @@ const texts = {
         },
         
         blue: { 
-            title: "Makmal Magic Time", 
+            title: "Waktu Makmal Magik", 
             content: "Pilih dua warna untuk dicampur dan lihat sihirnya!", 
 
             selectedColours: {
@@ -181,7 +168,7 @@ const texts = {
 
             link1: "https://sjkcdamak.my.canva.site/c91grc58w9zx8kyk",//match game
             link2: "https://sjkcdamak.my.canva.site/c8xfwtezqhdg2x66",//maze game
-            link3: "https://wordwall.net/resource/9063642/colors",//spin game
+            link3: "https://sjkcmasai.my.canva.site/c9bbvh84e0bvqwvb",//matching game
             link4: "https://sjkcmasai.my.canva.site/untitled-app"//spelling game
         },
         
@@ -217,7 +204,8 @@ const texts = {
         },
         
         orange: {
-            title: "Cheerful World of Colors"
+            title: "Cheerful World of Colours",
+            content: "Learn colour words with fun flashcards!"
         },
         
         yellow: { 
@@ -234,8 +222,8 @@ const texts = {
         },
         
         green: { 
-            title: "Smart Color Detective", 
-            content: "Let's test your color knowledge!", 
+            title: "Smart Colour Detective", 
+            content: "Let's test your colour knowledge!", 
             button: "Play Now",
             link: "https://kahoot.it/challenge/002867376"
         },
@@ -256,22 +244,22 @@ const texts = {
                 orange: "✨ Orange! ✨",
                 green: "✨ Green! ✨",
                 purple: "✨ Purple! ✨",
-                unknown: "✨ Beautiful Color Mix! ✨"
+                unknown: "✨ Beautiful Colour Mix! ✨"
             }
         },
         
         indigo: { 
-            title: "Color World Challenge", 
+            title: "Colour World Challenge", 
             content: "Complete the level to unlock the next challenge!", 
             level1: "Level 1", 
             level2 : "Level 2", 
             level3 : "Level 3",
             final: "Final Challenge",
 
-            link1: "https://sjkcdamak.my.canva.site",//match game
-            link2: "deepseek_html_20260518_1e092c.html",//maze game
-            link3: "https://wordwall.net/resource/9063642/colors",//spin game
-            link4: "https://sjkcmasai.my.canva.site/untitled-app"//spelling game
+            link1: "https://color-words-spelling.my.canva.site/",//match game
+            link2: "https://howsinyan.my.canva.site/",//maze game
+            link3: "https://sjkcmasai.my.canva.site/c9be2m5wypmqmhm8",//matching game
+            link4: "https://sjkcmasai.my.canva.site/c9bkqqwqsm8tnvhm"//spelling game
         },
         
         violet: {
@@ -339,6 +327,9 @@ function updateTexts() {
         let title =
         contentData.title;
 
+        let content =
+        contentData.content;
+
         // lock icon
         if (!unlockedLevels.includes(id)) {
 
@@ -390,39 +381,85 @@ function updateTexts() {
     // RED SECTION
     // =========================
 
-    const introList =
-    document.querySelector('.intro-list');
+    const red =
+    document.getElementById('red-content');
+    
+    if (red) {
+        
+        const redTitle =
+        red.querySelector('h2');
 
-    const redTitle =
-    document.querySelector('#red-content h2');
+        const redText =
+        red.querySelector('p');
 
-    // update title
-    if (redTitle) {
+        const introList =
+        red.querySelector('.intro-list');
+        
+        if (redTitle) {
+            
+            redTitle.textContent =
+            texts[currentLang].red.title;
 
-        redTitle.textContent =
-        texts[currentLang].red.title;
+        }
 
+        if (redText) {
+
+            redText.textContent =
+            texts[currentLang].red.content;
+
+        }
+
+        if (introList) {
+            
+            introList.innerHTML = '';
+            
+            const currentIntroList =
+            
+            currentLang === 'malay'
+            ? redIntroList
+            : redIntroListEn;
+            
+            currentIntroList.forEach(item => {
+                
+                introList.innerHTML += `
+                <li>${item}</li>
+                `;
+            
+            });
+        
+        }
+    
     }
 
-    // update intro list
-    if (introList) {
+    // =========================
+    // ORANGE SECTION
+    // =========================
 
-        introList.innerHTML = '';
+    const orange =
+    document.getElementById('orange-content');
+    
+    if (orange) {
+        
+        const orangeTitle =
+        orange.querySelector('h2');
 
-        const currentIntroList =
+        const orangeText =
+        orange.querySelector('p');
+        
+        if (orangeTitle) {
+            
+            orangeTitle.textContent =
+            texts[currentLang].orange.title;
 
-        currentLang === 'malay'
-        ? redIntroList
-        : redIntroListEn;
+        }
 
-        currentIntroList.forEach(item => {
+        if (orangeText) {
 
-            introList.innerHTML += `
-            <li>${item}</li>
-            `;
+            orangeText.textContent =
+            texts[currentLang].orange.content;
 
-        });
-
+        }
+    
     }
 
 
@@ -736,6 +773,22 @@ function updateTexts() {
 
 
 
+// UNLOCKED LEVELS
+let unlockedLevels = ['red'];
+
+
+// LEVEL ORDER
+const levelOrder = [
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'indigo',
+    'violet'
+];
+
+
 // UNLOCK NEXT LEVEL
 function unlockNextLevel(currentLevel) {
 
@@ -978,7 +1031,7 @@ updateTexts();
 const colourCards = [
 
     {
-        image: "🍎",
+        image: "images/red.jpg",
         english: "Red",
         malay: `<span class="syllable">Me</span><span>rah</span>`,
 
@@ -986,7 +1039,7 @@ const colourCards = [
     },
 
     {
-        image: "🍊",
+        image: "images/orange.jpg",
         english: "Orange",
         malay: `<span class="syllable">Jing</span><span>ga</span>`,
 
@@ -994,7 +1047,7 @@ const colourCards = [
     },
 
     {
-        image: "☀️",
+        image: "images/yellow.jpg",
         english: "Yellow",
         malay: `<span class="syllable">Ku</span><span>ning</span>`,
 
@@ -1002,7 +1055,7 @@ const colourCards = [
     },
 
     {
-        image: "🌊",
+        image: "images/blue.jpg",
         english: "Blue",
         malay: `<span class="syllable">Bi</span><span>ru</span>`,
 
@@ -1010,7 +1063,7 @@ const colourCards = [
     },
 
     {
-        image: "🍃",
+        image: "images/green.jpg",
         english: "Green",
         malay: `<span class="syllable">Hi</span><span>jau</span>`,
 
@@ -1018,9 +1071,9 @@ const colourCards = [
     },
 
     {
-        image: "🍇",
+        image: "images/purple.jpg",
         english: "Purple",
-        malay: `<span class="syllable">Un</span><span>gu</span>`,
+        malay: `<span class="syllable">U</span><span>ngu</span>`,
 
         malaySpeech: "Ungu"
     },
@@ -1034,7 +1087,7 @@ function updateCard() {
     const card = colourCards[currentCard];
 
     // image
-    document.getElementById('card-image').textContent =
+    document.getElementById('card-image').src =
     card.image;
 
     // word
