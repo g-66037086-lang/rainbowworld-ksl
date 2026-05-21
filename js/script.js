@@ -156,10 +156,10 @@ const texts = {
             level3 : "Tahap 3",
             final: "Cabaran Akhir",
 
-            link1: "https://sjkcdamak.my.canva.site/c91grc58w9zx8kyk",
-            link2: "https://sjkcdamak.my.canva.site/c8xfwtezqhdg2x66",
-            link3: "https://wordwall.net/resource/9063642/colors",
-            link4: "deepseek_html_20260518_1aa403 (1).html"
+            link1: "https://sjkcdamak.my.canva.site/c91grc58w9zx8kyk",//match game
+            link2: "https://sjkcdamak.my.canva.site/c8xfwtezqhdg2x66",//maze game
+            link3: "https://wordwall.net/resource/9063642/colors",//spin game
+            link4: "https://sjkcmasai.my.canva.site/untitled-app"//spelling game
         },
         
         violet: {
@@ -245,10 +245,10 @@ const texts = {
             level3 : "Level 3",
             final: "Final Challenge",
 
-            link1: "https://sjkcdamak.my.canva.site",
-            link2: "deepseek_html_20260518_1e092c.html",
-            link3: "https://wordwall.net/resource/9063642/colors",
-            link4: "deepseek_html_20260518_1f3e9a.html"
+            link1: "https://sjkcdamak.my.canva.site",//match game
+            link2: "deepseek_html_20260518_1e092c.html",//maze game
+            link3: "https://wordwall.net/resource/9063642/colors",//spin game
+            link4: "https://sjkcmasai.my.canva.site/untitled-app"//spelling game
         },
         
         violet: {
@@ -936,7 +936,7 @@ const colourCards = [
     },
 
     {
-        image: "🫐️",
+        image: "🌊",
         english: "Blue",
         malay: `<span class="syllable">Bi</span><span>ru</span>`,
 
