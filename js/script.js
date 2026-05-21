@@ -11,6 +11,29 @@ new Audio('audio/unlock.mp3');
 const mixSound =
 new Audio('audio/mix.mp3');
 
+const introSound =
+new Audio('audio/intro-list.mp3');
+
+const merahSound =
+new Audio('audio/merah.mp3');
+
+const jinggaSound =
+new Audio('audio/jingga.mp3');
+
+const kuningSound =
+new Audio('audio/kuning.mp3');
+
+const biruSound =
+new Audio('audio/biru.mp3');
+
+const hijauSound =
+new Audio('audio/hijau.mp3');
+
+const unguSound =
+new Audio('audio/ungu.mp3');
+
+
+
 // START SCREEN
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -782,66 +805,109 @@ function readIntro() {
     const items =
     document.querySelectorAll('.intro-list li');
 
-    let index = 0;
+    // remove all highlight
+    items.forEach(item => {
+        item.classList.remove('speaking');
+    });
 
-    function speakNext() {
+    // =========================
+    // BM AUDIO VERSION
+    // =========================
+    if (currentLang === 'malay') {
 
-        // stop
-        if (index >= items.length) return;
+        speechSynthesis.cancel();
 
-        // remove old highlight
-        items.forEach(item => {
-            item.classList.remove('speaking');
+        introSound.currentTime = 0;
+        introSound.play();
+
+        // ✨ highlight timing
+        const timings = [
+            0,
+            3000,
+            7000,
+            10000,
+            13000,
+            17000,
+            20000,
+            23000
+        ];
+
+        timings.forEach((time, index) => {
+
+            setTimeout(() => {
+
+                items.forEach(item =>
+                    item.classList.remove('speaking')
+                );
+
+                if (items[index]) {
+                    items[index]
+                    .classList.add('speaking');
+                }
+
+            }, time);
+
         });
 
-        // current sentence
-        const currentItem =
-        items[index];
+        // remove final highlight
+        introSound.onended = () => {
 
-        // highlight
-        currentItem.classList.add('speaking');
+            items.forEach(item => {
+                item.classList.remove('speaking');
+            });
 
-        // speech
-        const utterance =
-        new SpeechSynthesisUtterance(
-            currentItem.textContent
-        );
+        };
 
-        // 🌈 language
-        if (currentLang === 'malay') {
-            utterance.lang = 'id-ID';
-            
-            const voices =
-            speechSynthesis.getVoices();
-            
-            const malayVoice =
-            voices.find(voice =>
-                voice.lang.includes('id')
+    }
+
+    // =========================
+    // ENGLISH SPEECH VERSION
+    // =========================
+    else {
+
+        let index = 0;
+
+        function speakNext() {
+
+            if (index >= items.length) return;
+
+            items.forEach(item => {
+                item.classList.remove('speaking');
+            });
+
+            const currentItem =
+            items[index];
+
+            currentItem.classList.add('speaking');
+
+            const utterance =
+            new SpeechSynthesisUtterance(
+                currentItem.textContent
             );
-            
-            if (malayVoice) {
-                utterance.voice = malayVoice;
-            }
-        
-        } else {
+
             utterance.lang = 'en-US';
-            }
-            
             utterance.rate = 0.85;
             utterance.pitch = 1.1;
 
-            // next after speaking
             utterance.onend = () => {
+
                 currentItem.classList.remove('speaking');
+
                 index++;
-                
+
                 speakNext();
+
             };
-            
+
             speechSynthesis.speak(utterance);
+
         }
+
         speakNext();
+
     }
+
+}
     
     // CLICK COLOURS
     document.querySelectorAll('.color').forEach(color => {
@@ -1043,37 +1109,64 @@ document.getElementById('speak-card-btn')
     const card =
     colourCards[currentCard];
 
-    let text = '';
-
-    const speech =
-    new SpeechSynthesisUtterance();
-
-    // language
+    // =========================
+    // ENGLISH
+    // =========================
     if (currentLang === 'english') {
 
-        text = card.english;
+        const speech =
+        new SpeechSynthesisUtterance(
+            card.english
+        );
 
         speech.lang = 'en-US';
-
         speech.rate = 0.8;
         speech.pitch = 1.1;
 
-    } else {
-
-        text = card.malaySpeech;
-
-        speech.lang = 'ms-MY';
-
-        speech.rate = 0.9;
-        speech.pitch = 1;
+        speechSynthesis.speak(speech);
 
     }
 
-    speech.text = text;
+    // =========================
+    // MALAY AUDIO
+    // =========================
+    else {
 
-    speechSynthesis.speak(speech);
+        let sound;
 
-    updateCard();
+        if (card.malaySpeech === 'Merah') {
+            sound = merahSound;
+        }
+
+        else if (card.malaySpeech === 'Jingga') {
+            sound = jinggaSound;
+        }
+
+        else if (card.malaySpeech === 'Kuning') {
+            sound = kuningSound;
+        }
+
+        else if (card.malaySpeech === 'Biru') {
+            sound = biruSound;
+        }
+
+        else if (card.malaySpeech === 'Hijau') {
+            sound = hijauSound;
+        }
+
+        else if (card.malaySpeech === 'Ungu') {
+            sound = unguSound;
+        }
+
+        if (sound) {
+
+            sound.currentTime = 0;
+
+            sound.play();
+
+        }
+
+    }
 
 });
 
