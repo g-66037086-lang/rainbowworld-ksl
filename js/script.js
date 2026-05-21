@@ -12,7 +12,7 @@ const mixSound =
 new Audio('audio/mix.mp3');
 
 const introSound =
-new Audio('audio/intro-list.mp3');
+new Audio('audio/intro-list-2.mp3');
 
 const merahSound =
 new Audio('audio/merah.mp3');
@@ -823,13 +823,13 @@ function readIntro() {
         // ✨ highlight timing
         const timings = [
             0,
-            3000,
-            7000,
-            10000,
-            13000,
-            17000,
-            20000,
-            23000
+            5000,
+            11000,
+            16000,
+            22000,
+            28000,
+            34000,
+            40000
         ];
 
         timings.forEach((time, index) => {
