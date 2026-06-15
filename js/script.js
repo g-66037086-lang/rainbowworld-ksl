@@ -225,7 +225,7 @@ const texts = {
             title: "Smart Colour Detective", 
             content: "Let's test your colour knowledge!", 
             button: "Play Now",
-            link: "https://kahoot.it/challenge/002867376"
+            link: "https://wayground.com/join?gc=13429065&source=liveDashboard"
         },
         
         blue: { 
