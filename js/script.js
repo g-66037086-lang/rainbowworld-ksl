@@ -1005,7 +1005,7 @@ function readIntro() {
 // Btn-1 red
 const redIntroList = [
     '<i class="fa-solid fa-pen-nib"></i> Murid akan memulakan pengembaraan dengan pengenalan laman web.',
-    '<i class="fa-solid fa-pen-nib"></i> Murid belajar mengenal warna asas melalui kad imbasan.',
+    '<i class="fa-solid fa-pen-nib"></i> Murid belajar mengenal warna asas melalui -.',
     '<i class="fa-solid fa-pen-nib"></i> Murid mendengar cerita pari-pari warna-warni.',
     '<i class="fa-solid fa-pen-nib"></i> Murid menjawab soalan mudah berkaitan cerita.',
     '<i class="fa-solid fa-pen-nib"></i> Murid meneroka aktiviti mencampurkan warna secara ajaib.',
