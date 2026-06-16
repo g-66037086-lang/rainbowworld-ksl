@@ -12,7 +12,7 @@ const mixSound =
 new Audio('audio/mix.mp3');
 
 const introSound =
-new Audio('audio/intro-list-2.mp3');
+new Audio('audio/intro-list-3.mp3');
 
 const merahSound =
 new Audio('audio/merah.mp3');
@@ -876,13 +876,13 @@ function readIntro() {
         // ✨ highlight timing
         const timings = [
             0,
-            5000,
-            11000,
-            16000,
+            6000,
+            12000,
+            17000,
             22000,
-            28000,
+            29000,
             34000,
-            40000
+            39000
         ];
 
         timings.forEach((time, index) => {
@@ -1005,7 +1005,7 @@ function readIntro() {
 // Btn-1 red
 const redIntroList = [
     '<i class="fa-solid fa-pen-nib"></i> Murid akan memulakan pengembaraan dengan pengenalan laman web.',
-    '<i class="fa-solid fa-pen-nib"></i> Murid belajar mengenal warna asas melalui kad imbas.',
+    '<i class="fa-solid fa-pen-nib"></i> Murid belajar mengenal warna asas melalui kad imbasan.',
     '<i class="fa-solid fa-pen-nib"></i> Murid mendengar cerita pari-pari warna-warni.',
     '<i class="fa-solid fa-pen-nib"></i> Murid menjawab soalan mudah berkaitan cerita.',
     '<i class="fa-solid fa-pen-nib"></i> Murid meneroka aktiviti mencampurkan warna secara ajaib.',
