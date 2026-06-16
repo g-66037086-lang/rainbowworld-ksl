@@ -30,7 +30,7 @@ const hijauSound =
 new Audio('audio/hijau.mp3');
 
 const unguSound =
-new Audio('audio/ungu.mp3');
+new Audio('audio/ungu-2.mp3');
 
 
 
